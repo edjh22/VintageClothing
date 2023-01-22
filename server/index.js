@@ -13,6 +13,9 @@ import { register } from "./controller/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/post.js";
 import { createPost } from "./controllers/post.js";
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+
 /* Modifications  */
 
 const __filename = fileURLToPath(import.meta.url); // grab the file url
