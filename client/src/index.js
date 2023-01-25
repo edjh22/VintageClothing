@@ -25,15 +25,19 @@ const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
-                ignoredActions: []
-            }
-        })
-
-})
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        }),
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+      <Provider store={store}>
+          <PersistGate loading = {null} persistor = {persistStore(store)}>
+          <App />
+      </PersistGate>
+      </Provider>
     <App />
   </React.StrictMode>
 );
