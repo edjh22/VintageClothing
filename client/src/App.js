@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
     const mode = useSelector((state) => state.mode);
@@ -14,6 +16,7 @@ function App() {
 
 
   return (
+      <Provider store={store}>
     <div className="app">
       <BrowserRouter>
           <ThemeProvider theme={theme}>
@@ -26,6 +29,7 @@ function App() {
       </ThemeProvider>
       </BrowserRouter>
     </div>
+      </Provider>
   );
 }
 
